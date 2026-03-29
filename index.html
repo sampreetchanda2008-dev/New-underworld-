@@ -674,7 +674,16 @@
     
 </div>
 
-
+<script>
+  if ('service-worker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('SW Registered'))
+        .catch(err => console.log('SW Failed', err));
+    });
+  }
+</script>
+	
 
     <script src="script.js"></script>
 </body>
