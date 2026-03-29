@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Underworld Raids</title>
+    <link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/jpeg" href="assets/boss_icons/boss_arkhos.jpg">
+</head>
+<body>
+
+
+
+
+   <div class="main-screen" id="main-screen">
+    <h1 class="title">Underworld Raids</h1>
+	
+	
+	<div id="enchantment-nav-wrapper">
+    <button class="enchant-btn" onclick="openEnchantments()" style="position:absolute; top:20px; left:20px; z-index: 10;">
+        ENCHANTMENTS
+    </button>
+</div>
+
+    
+    <div class="currency-display-top">
+        <div class="currency-box">
+            <span id="gem-count-top">0</span>
+            <img src="assets/currencies/currency_gems.jpg" class="hud-icon">
+        </div>
+    </div> 
+
+    <div class="dan-status-container">
+        <img id="dan-belt-icon" src="assets/beltsrating/belt_bronze.jpg" alt="Belt">
+        
+        <div class="dan-bar-bg">
+            <div id="dan-bar-fill" style="width: 0%;"></div>
+        </div>
+
+        <div class="rating-display-row">
+            <span id="dan-stats-text">0 / 2,000</span>
+            <img src="assets/beltsrating/rating.jpg" class="rating-mini-icon">
+        </div>
+        
+        <div id="dan-display-text" style="font-size: 10px; color: #aaa; margin-top: 2px;">DAN 1</div>
+    </div>
+
+    <div class="profile-tab-container">
+        <div class="tab" onclick="openProfile()">Profile</div>
+    </div>
+
+    <div class="tabs">
+        <div class="tab" onclick="openRaids()">Raids</div>
+        <div class="tab" onclick="openUnderworld()">Underworld</div>
+        <div class="tab" onclick="openShop()">Shop</div>
+    </div>
+</div>
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	<!--raids tab-->
+
+    <div class="raids-tab" id="raids-tab">
+        <div class="game-hud">
+            <div class="currency-box">
+                <img src="assets/energies/energy_void.jpg" class="hud-icon">
+                <span id="void-val" class="green-text">0</span>
+            </div>
+            <div class="currency-box">
+                <img src="assets/energies/energy_shadow.jpg" class="hud-icon">
+                <span id="focus-val" class="green-text">45</span>
+            </div>
+            <div class="currency-box">
+                <img src="assets/energies/energy_bloom.jpg" class="hud-icon">
+                <span id="bloom-val" class="green-text">8</span>
+            </div>
+            <div class="currency-box">
+                <img src="assets/energies/energy_crysonite.jpg" class="hud-icon">
+                <span id="retention-val" class="green-text">3</span>
+            </div>
+        </div>
+        <button class="back-btn" onclick="goHome()">← Back</button>
+        <div class="raids-list">
+            <div class="raid-row">
+                <img src="assets/locations_raids/location_volcano.png" alt="Volcano" class="raid-icon">
+                <div class="raid-info">
+                    <h3>I. Emergence (-50 Void Energy)</h3>
+                    <p>Wake up at 7 AM, follow raids session (8:00-21:30), no mobile/laptop except for raids, reward session (21:30-22:30), sleep 22:30</p>
+                </div>
+                <button class="complete-btn" onclick="completeRaid('Emergence')">Complete</button>
+            </div>
+            <div class="raid-row">
+                <img src="assets/locations_raids/location_megalith.png" alt="Megalith" class="raid-icon">
+                <div class="raid-info">
+                    <h3>II. Unwavered (-150 Void Energy)</h3>
+                    <p>Restrain from (YouTube/Instagram/reddit/games) during academic/upskilling/workout (17:30-18:30). Refreshments (18:30-18:50)</p>
+                </div>
+                <button class="complete-btn" onclick="completeRaid('Unwavered')">Complete</button>
+            </div>
+            <div class="raid-row">
+                <img src="assets/locations_raids/location_fungus.png" alt="Fungus" class="raid-icon">
+                <div class="raid-info">
+                    <h3>III. Anamnesis (-9500 Void Energy)</h3>
+                    <p>Chemistry Part A – Inorganic (1B x10Q, 1oth. x12Q). Time limit: 90 mins</p>
+                </div>
+                <button class="complete-btn" onclick="completeRaid('Anamnesis')">Complete</button>
+            </div>
+            <div class="raid-row">
+                <img src="assets/locations_raids/location_vortex.png" alt="Vortex" class="raid-icon">
+                <div class="raid-info">
+                    <h3>IV. Frivolity (-12,000 Void Energy)</h3>
+                    <p>Chemistry Part B – Organic (1C-15Q). Time limit: 60 mins</p>
+                </div>
+                <button class="complete-btn" onclick="completeRaid('Frivolity')">Complete</button>
+            </div>
+            <div class="raid-row">
+                <img src="assets/locations_raids/location_fatum.png" alt="Fatum" class="raid-icon">
+                <div class="raid-info">
+                    <h3>V. Depths (-18,000 Void Energy)</h3>
+                    <p>Chemistry Part C – Physical (3C-12Q). Time limit: 95 mins</p>
+                </div>
+                <button class="complete-btn" onclick="completeRaid('Depths')">Complete</button>
+            </div>
+            <div class="raid-row">
+                <img src="assets/locations_raids/location_arkhos.png" alt="Arkhos" class="raid-icon">
+                <div class="raid-info">
+                    <h3>VI. Cogitation (-48,000 Void Energy)</h3>
+                    <p>Physics Part A (3 Easy Chapters, 12Q). Time limit: 80 mins</p>
+                </div>
+                <button class="complete-btn" onclick="completeRaid('Cogitation')">Complete</button>
+            </div>
+            <div class="raid-row">
+                <img src="assets/locations_raids/location_hoaxen.png" alt="Hoaxen" class="raid-icon">
+                <div class="raid-info">
+                    <h3>VII. Proficiency (- 88,960 Void Energy)</h3>
+                    <p>Physics Part B (4 Hard Chapters, 12Q). Time limit: 120 mins</p>
+                </div>
+                <button class="complete-btn" onclick="completeRaid('Proficiency')">Complete</button>
+            </div>
+            <div class="raid-row">
+                <img src="assets/locations_raids/location_karcer.png" alt="Karcer" class="raid-icon">
+                <div class="raid-info">
+                    <h3>VIII. Praxis (-98,900 Void Energy)</h3>
+                    <p>Mathematics Part A (any 1 of TRI/SRF/VEC-3D/PnC-Prob, 20Q). Time limit: 60 mins</p>
+                </div>
+                <button class="complete-btn" onclick="completeRaid('Praxis')">Complete</button>
+            </div>
+            <div class="raid-row">
+                <img src="assets/locations_raids/location_drakaina.png" alt="Drakaina" class="raid-icon">
+                <div class="raid-info">
+                    <h3>IX. Coherence (-172,890 Void Energy)</h3>
+                    <p>Mathematics Part B – (Integral/Diff Calculus) + (Coord. Geo.) + (Alg.) 3x15Q. Time limit: 120 mins</p>
+                </div>
+                <button class="complete-btn" onclick="completeRaid('Coherence')">Complete</button>
+            </div>
+            <div class="raid-row">
+                <img src="assets/locations_raids/location_tenebris.webp" alt="Tenebris" class="raid-icon">
+                <div class="raid-info">
+                    <h3>Trial of Resolve-I (-2,460,080 Void Energy)</h3>
+                    <p>Secure 200 marks over 5 tests (JEE-M) OR 120 marks across 2 papers (JEE-A)</p>
+                </div>
+                <button class="complete-btn" onclick="completeRaid('Trial of Resolve I')">Complete</button>
+            </div>
+            <div class="raid-row">
+                <img src="assets/locations_raids/location_stalker.webp" alt="Stalker" class="raid-icon">
+                <div class="raid-info">
+                    <h3>Trial of Resolve-II (-9,990,050 Void Energy)</h3>
+                    <p>Secure 240+ marks over 5 tests (JEE-M) OR 200+ marks over 2 Papers (JEE-A)</p>
+                </div>
+                <button class="complete-btn" onclick="completeRaid('Trial of Resolve II')">Complete</button>
+            </div>
+        </div>
+    </div>
+	
+	<!--underworld tab-->
+
+    <div class="raids-tab" id="underworld-tab">
+    <button class="back-btn" onclick="goHome()">← Back</button>
+	<div class="power-mode-container" style="background: #000; padding: 15px; border: 2px solid #ff0000; margin-bottom: 20px; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 15px;">
+    <span style="color: #ff0000; font-family: 'Courier New', Courier, monospace; font-weight: bold; text-shadow: 0 0 10px #ff0000; font-size: 1.2rem;">POWER MODE</span>
+    <label class="scary-checkbox">
+        <input type="checkbox" id="powerModeToggle" onchange="togglePowerMode()">
+        <span class="checkmark"></span>
+    </label>
+</div>
+    <div class="raids-list">
+        <div class="raid-row">
+            <img src="assets/boss_icons/boss_volcano.jpg" class="raid-icon">
+            <div class="raid-info"><h3>Volcano</h3><p>Shield: 1757 🛡</p></div>
+            <button id="btn-volcano" class="complete-btn" onclick="showGameNotice('COMPLETE RAID FIRST')">Not Complete</button>
+        </div>
+        <div class="raid-row">
+            <img src="assets/boss_icons/boss_megalith.jpg" class="raid-icon">
+            <div class="raid-info"><h3>Megalith</h3><p>Shield: 5621 🛡</p></div>
+            <button id="btn-megalith" class="complete-btn" onclick="showGameNotice('COMPLETE RAID FIRST')">Not Complete</button>
+        </div>
+        <div class="raid-row">
+            <img src="assets/boss_icons/boss_fungus.jpg" class="raid-icon">
+            <div class="raid-info"><h3>Fungus</h3><p>Shield: 10,095 🛡</p></div>
+            <button id="btn-fungus" class="complete-btn" onclick="showGameNotice('COMPLETE RAID FIRST')">Not Complete</button>
+        </div>
+        <div class="raid-row">
+            <img src="assets/boss_icons/boss_vortex.jpg" class="raid-icon">
+            <div class="raid-info"><h3>Vortex</h3><p>Shield: 11,071 🛡</p></div>
+            <button id="btn-vortex" class="complete-btn" onclick="showGameNotice('COMPLETE RAID FIRST')">Not Complete</button>
+        </div>
+        <div class="raid-row">
+            <img src="assets/boss_icons/boss_fatum.jpg" class="raid-icon">
+            <div class="raid-info"><h3>Fatum</h3><p>Shield: 8473 🛡</p></div>
+            <button id="btn-fatum" class="complete-btn" onclick="showGameNotice('COMPLETE RAID FIRST')">Not Complete</button>
+        </div>
+        <div class="raid-row">
+            <img src="assets/boss_icons/boss_arkhos.jpg" class="raid-icon">
+            <div class="raid-info"><h3>Arkhos</h3><p>Shield: 8893 🛡</p></div>
+            <button id="btn-arkhos" class="complete-btn" onclick="showGameNotice('COMPLETE RAID FIRST')">Not Complete</button>
+        </div>
+        <div class="raid-row">
+            <img src="assets/boss_icons/boss_hoaxen.jpg" class="raid-icon">
+            <div class="raid-info"><h3>Hoaxen</h3><p>Shield: 12,639 🛡</p></div>
+            <button id="btn-hoaxen" class="complete-btn" onclick="showGameNotice('COMPLETE RAID FIRST')">Not Complete</button>
+        </div>
+        <div class="raid-row">
+            <img src="assets/boss_icons/boss_karcer.jpg" class="raid-icon">
+            <div class="raid-info"><h3>Karcer</h3><p>Shield: 10,473 🛡</p></div>
+            <button id="btn-karcer" class="complete-btn" onclick="showGameNotice('COMPLETE RAID FIRST')">Not Complete</button>
+        </div>
+        <div class="raid-row">
+            <img src="assets/boss_icons/boss_drakaina.jpg" class="raid-icon">
+            <div class="raid-info"><h3>Drakaina</h3><p>Shield: 12,513 🛡</p></div>
+            <button id="btn-drakaina" class="complete-btn" onclick="showGameNotice('COMPLETE RAID FIRST')">Not Complete</button>
+        </div>
+        <div class="raid-row">
+            <img src="assets/boss_icons/boss_tenebris.jpg" class="raid-icon">
+            <div class="raid-info"><h3>Tenebris</h3><p>Shield: 14,477 🛡</p></div>
+            <button id="btn-tenebris" class="complete-btn" onclick="showGameNotice('COMPLETE RAID FIRST')">Not Complete</button>
+        </div>
+        <div class="raid-row">
+            <img src="assets/boss_icons/boss_stalker.jpg" class="raid-icon">
+            <div class="raid-info"><h3>Stalker</h3><p>Shield: 16,911 🛡</p></div>
+            <button id="btn-stalker" class="complete-btn" onclick="showGameNotice('COMPLETE RAID FIRST')">Not Complete</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!--shop tab-->
+    <div class="raids-tab" id="shop-tab" style="background: url('bg_shop.PNG') no-repeat center center fixed; background-size: cover; display: none;">
+    <div class="game-hud">
+        <button class="back-btn" onclick="goHome()">Back</button>
+        <div class="currency-box">
+            <span id="shop-gem-count">0</span>
+            <img src="assets/currencies/currency_gems.jpg" class="hud-icon">
+        </div>
+    </div>
+
+    <div class="shop-layout" style="display: flex; justify-content: center; gap: 20px; padding: 20px;">
+        
+        <div class="shop-left" style="flex: 1; max-width: 500px;">
+            <div class="shop-box">
+                <h3>Energy Vault</h3>
+                <div class="vault-row">
+                    <div class="item-details">
+                        <span class="item-name"><span id="void-vault-amount">5000</span> Void Energy</span>
+                        <img src="assets/energies/energy_void.jpg" class="vault-preview-img">
+                    </div>
+                    <button class="buy-yellow-box" onclick="buyEnergy(50000, 18500)">
+    Buy 50000 with 18,500 <img src="assets/currencies/currency_gems.jpg" class="tiny-icon">
+</button>
+                </div>
+            </div>
+
+            <div class="shop-box key-inventory">
+                <h3>Key Collection</h3>
+                <div class="key-grid">
+                    <div class="key-slot"><img src="assets/key_icons/key_steel.jpg"> <span id="steel-count">0</span></div>
+                    <div class="key-slot"><img src="assets/key_icons/key_flame.jpg"> <span id="flame-count">0</span></div>
+                    <div class="key-slot"><img src="assets/key_icons/key_crystal.jpg"> <span id="crystal-count">0</span></div>
+                    <div class="key-slot"><img src="assets/key_icons/key_fungal.jpg"> <span id="fungal-count">0</span></div>
+                    <div class="key-slot"><img src="assets/key_icons/key_hydra.jpg"> <span id="hydra-count">0</span></div>
+                    <div class="key-slot"><img src="assets/key_icons/key_phantom.jpg"> <span id="phantom-count">0</span></div>
+                    <div class="key-slot"><img src="assets/key_icons/key_plague.jpg"> <span id="plague-count">0</span></div>
+                    <div class="key-slot"><img src="assets/key_icons/key_hoax.jpg"> <span id="hoax-count">0</span></div>
+                    <div class="key-slot"><img src="assets/key_icons/key_famine.jpg"> <span id="famine-count">0</span></div>
+                    <div class="key-slot"><img src="assets/key_icons/key_bloodshed.jpg"> <span id="bloodshed-count">0</span></div>
+                    <div class="key-slot"><img src="assets/key_icons/key_portal.jpg"> <span id="portal-count">0</span></div>
+					<div class="key-slot"><img src="assets/key_icons/key_obelisk.jpg"> <span id="obelisk-count">0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shop-right" style="flex: 1; max-width: 500px;">
+            <div class="shop-box">
+                <h3>CHARGES OF DARKNESS</h3>
+                <div class="charge-item">
+                    <img src="assets/energies/charge_small.jpg" class="charge-icon">
+                    <div class="charge-info">
+                        <span class="charge-name">Small Charge (<span id="small-count">0</span>)</span>
+                        <p>Dmg: 88</p>
+                    </div>
+                    <button class="buy-yellow-box" onclick="buyCharge('small', 5)">
+                        Buy 5 <img src="assets/currencies/currency_gems.jpg" class="tiny-icon">
+                    </button>
+                </div>
+
+                <div class="charge-item">
+                    <img src="assets/energies/charge_medium.jpg" class="charge-icon">
+                    <div class="charge-info">
+                        <span class="charge-name">Medium Charge (<span id="medium-count">0</span>)</span>
+                        <p>Dmg: 551</p>
+                    </div>
+                    <button class="buy-yellow-box" onclick="buyCharge('medium', 25)">
+                        Buy 25 <img src="assets/currencies/currency_gems.jpg" class="tiny-icon">
+                    </button>
+                </div>
+
+                <div class="charge-item">
+                    <img src="assets/energies/charge_large.jpg" class="charge-icon">
+                    <div class="charge-info">
+                        <span class="charge-name">Large Charge (<span id="large-count">0</span>)</span>
+                        <p>Dmg: 1051</p>
+                    </div>
+                    <button class="buy-yellow-box" onclick="buyCharge('large', 35)">
+                        Buy 35 <img src="assets/currencies/currency_gems.jpg" class="tiny-icon">
+                    </button>
+                </div>
+            </div>
+        </div>
+		
+		<div id="enchantment-currency-shop">
+    <h3 style="color: #FFF027; text-align: center; font-family: sans-serif;">Energy Crystals</h3>
+    
+    <div class="shop-item">
+    <img src="../underworld/assets/energies/energy_shadow.jpg" alt="Energy Shadow">
+    <div class="item-info">
+        <span>Shadow Energy 200</span>
+        <button onclick="buyEnergy('energyShadow', 50)">
+            BUY 9000 <img src="../underworld/assets/currencies/currency_gems.jpg" style="width: 15px; height: 15px; vertical-align: middle; margin-left: 5px; object-fit: contain;">
+        </button>
+    </div>
+</div>
+
+<div class="shop-item">
+    <img src="../underworld/assets/energies/energy_bloom.jpg" alt="Energy Bloom">
+    <div class="item-info">
+        <span>Bloom Energy 250</span>
+        <button onclick="buyEnergy('energyBloom', 150)">
+            BUY 12000 <img src="../underworld/assets/currencies/currency_gems.jpg" style="width: 15px; height: 15px; vertical-align: middle; margin-left: 5px; object-fit: contain;">
+        </button>
+    </div>
+</div>
+
+<div class="shop-item">
+    <img src="../underworld/assets/energies/energy_crysonite.jpg" alt="Energy Crysonite">
+    <div class="item-info">
+        <span>Crysonite 500</span>
+        <button onclick="buyEnergy('energyCrysonite', 500)">
+            BUY 25000 <img src="../underworld/assets/currencies/currency_gems.jpg" style="width: 15px; height: 15px; vertical-align: middle; margin-left: 5px; object-fit: contain;">
+        </button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+		
+    </div> </div> ```
+
+<!--profile-->
+
+    <div class="tab-screen" id="profile-tab" style="background: url('bg_pfp.PNG') no-repeat center center fixed; background-size: cover; display: none;">
+        <button class="back-btn" onclick="goHome()">← BACK</button>
+
+        <div id="weapons-overlay" class="overlay-dark" style="display: none;">
+            <div class="weapons-container">
+                <h2 class="gold-text">WEAPON COLLECTION</h2>
+               <div id="weapons-grid" class="overlay-grid">
+    
+    <div id="weapons-grid" class="overlay-grid">
+    
+    <div class="league-section">
+        <div class="league-header-banner">Bronze League</div>
+        <img src="assets/beltsrating/belt_bronze.jpg" class="league-belt-icon">
+        <div id="bronze-weapons-grid" class="league-weapons-grid"></div>
+    </div>
+
+    <div class="league-section">
+        <div class="league-header-banner">Silver League</div>
+        <img src="assets/beltsrating/belt_silver.jpg" class="league-belt-icon">
+        <div id="silver-weapons-grid" class="league-weapons-grid"></div>
+    </div>
+
+    <div class="league-section">
+        <div class="league-header-banner">Gold League</div>
+        <img src="assets/beltsrating/belt_gold.jpg" class="league-belt-icon">
+        <div id="gold-weapons-grid" class="league-weapons-grid"></div>
+    </div>
+
+    <div class="league-section">
+        <div class="league-header-banner">Platinum League</div>
+        <img src="assets/beltsrating/belt_platinum.jpg" class="league-belt-icon">
+        <div id="platinum-weapons-grid" class="league-weapons-grid"></div>
+    </div>
+
+    <div class="league-section">
+        <div class="league-header-banner">Emerald League</div>
+        <img src="assets/beltsrating/belt_emerald.jpg" class="league-belt-icon">
+        <div id="emerald-weapons-grid" class="league-weapons-grid"></div>
+    </div>
+
+    <div class="league-section">
+        <div class="league-header-banner">Dragon League</div>
+        <img src="assets/beltsrating/belt_dragon.jpg" class="league-belt-icon">
+        <div id="dragon-weapons-grid" class="league-weapons-grid"></div>
+    </div>
+
+    <div class="league-section">
+        <div class="league-header-banner">Void League</div>
+        <img src="assets/beltsrating/belt_void.jpg" class="league-belt-icon">
+        <div id="void-weapons-grid" class="league-weapons-grid"></div>
+    </div>
+
+</div>
+
+    </div>
+                <button class="back-btn" onclick="closeWeapons()">Back</button>
+            </div>
+        </div>
+
+        <div class="profile-layout">
+            <div class="profile-col">
+                <div class="weapon-equipped-card">
+    <h3>WEAPON EQUIPPED:</h3>
+    <img src="assets/weapons/fatesend.PNG" id="profile-weapon-img"> 
+    <div class="check-mark">✔</div>
+    <p class="damage-glow" id="profile-weapon-damage">Damage: 200</p>
+</div>
+
+                <div class="stat-box inventory-box">
+                    <h3 class="gold-text collection-btn" onclick="openWeapons()">WEAPONS</h3>
+                    <div class="weapon-grid-preview">
+                        <p class="gray-text">Tap to view collection</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-col">
+                <div class="stat-box stats-main">
+                    <h2 class="gold-text" onclick="devInject()" style="cursor: pointer;">SAMPREET</h2>
+                    <div class="stat-line"><span>CURRENT DAN:</span> <span id="dan-val">1</span></div>
+                    <div class="stat-line"><span>CURRENT RATING:</span> <span id="rating-val">0</span></div>
+                    <div class="stat-line"><span>BEST RATING:</span> <span id="best-rating-val">0</span></div>
+                    
+                    
+                    <hr class="divider">
+                    
+                    <h3 class="gold-text" onclick="totalResetGame()" style="cursor: pointer;">LEAGUE</h3>
+                    <div class="league-display">
+                        <p id="league-name" class="league-glow">BRONZE LEAGUE</p>
+                        <img src="assets/beltsrating/belt_bronze.jpg" id="league-belt" class="belt-img">
+						
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+    </div>
+	
+	<!--boss battle--> 
+   <div id="battle-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:20000; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-family: 'Arial', sans-serif; overflow:hidden;">
+             <div id="player-status-effects"></div>
+			 <div id="boss-status-effects"></div>
+    <div id="battle-screen-content" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 95vh;">
+        
+        <img id="boss-battle-img" src="" style="height:35vh; width:auto; aspect-ratio:1/1; margin-bottom:2vh; border: 3px solid #444; border-radius:15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); object-fit: cover;">
+        
+        <div style="width:80vw; max-width:350px; height:2.5vh; background:#222; border:2px solid #555; border-radius:20px; overflow:hidden; position:relative; margin: 0 auto;">
+            <div id="shield-bar-fill" style="width:100%; height:100%; background: linear-gradient(90deg, #0056b3, #00aaff); transition: width 0.3s ease-out;"></div>
+        </div>
+        
+        <p id="shield-value-text" style="color:white; margin-top:1vh; font-size: 1rem; font-weight:bold; letter-spacing: 1px;">0 / 0</p>
+
+        <div style="margin: 3vh 0;">
+            <button onclick="dealDamage('weapon')" style="background:#ff0000; color:black; border:4px solid #800000; padding:1.5vh 10vw; font-weight:900; font-size:1.8rem; cursor:pointer; text-transform: uppercase; border-radius: 5px;">ATTACK</button>
+        </div>
+
+        <div style="display:flex; gap:8vw; justify-content:center; background: rgba(255,255,255,0.05); padding: 1.5vh; border-radius: 15px; width: fit-content; margin: 0 auto;">
+            <div onclick="dealDamage('small')" style="cursor:pointer;">
+                <img src="assets/energies/charge_small.jpg" style="width:12vw; max-width:50px;" title="Small Charge">
+                <p id="small-count-ui" style="color:white; margin-top:0.5vh; font-weight:bold; font-size:0.9rem;">0</p>
+            </div>
+            <div onclick="dealDamage('medium')" style="cursor:pointer;">
+                <img src="assets/energies/charge_medium.jpg" style="width:12vw; max-width:50px;" title="Medium Charge">
+                <p id="medium-count-ui" style="color:white; margin-top:0.5vh; font-weight:bold; font-size:0.9rem;">0</p>
+            </div>
+            <div onclick="dealDamage('large')" style="cursor:pointer;">
+                <img src="assets/energies/charge_large.jpg" style="width:12vw; max-width:50px;" title="Large Charge">
+                <p id="large-count-ui" style="color:white; margin-top:0.5vh; font-weight:bold; font-size:0.9rem;">0</p>
+            </div>
+        </div>
+    </div>
+	
+	<!--victoryscreen--> 
+    <div id="victory-screen" style="display:none; flex-direction:column; align-items:center; justify-content:center; height:100%; width:100%; animation: fadeIn 0.5s;">
+        <h1 style="color:#FFD700; font-size:4rem; font-weight:900; margin-bottom: 20px; text-shadow: 0 0 20px rgba(255,215,0,0.5);">YOU WIN!</h1>
+        <div id="victory-rewards-list" style="margin-top: 40px; color:white; font-size:1.5rem; display: flex; flex-direction: column; gap: 15px; align-items: center;"></div>
+        <button onclick="closeBattle()" style="margin-top:40px; padding:15px 50px; font-size: 1.2rem; font-weight: bold; cursor:pointer; background: #fff; border: none; border-radius: 5px;">COLLECT REWARDS</button>
+    </div>
+    </div>
+	<!--raidreward-->
+<div id="raid-reward-overlay" style="display:none !important; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:30000; justify-content:center; align-items:center; flex-direction:column; text-align:center;">
+    <div id="reward-text-content" style="margin-top: 15vh;"></div>
+    <button onclick="closeRaidReward()" style="margin-top:30px; padding:10px 40px; background:#fff; color:#000; border:none; cursor:pointer; font-weight:bold; border-radius:5px;">OK</button>
+</div>
+
+   <!--enchant-->
+   
+<div class="tab-screen" id="enchantments-tab" style="background: url('../Underworld/bg_enchantments.webp') no-repeat center center fixed; background-size: cover; display: none;">
+    <button class="back-btn" onclick="goHome()">← BACK</button>
+    
+    <div class="enchant-container" style="display: flex; justify-content: flex-start; align-items: center; height: 100vh; width: 100vw; padding-left: 15vw;">
+    
+        <div id="enchant-vertical-band" style="width: 320px; height: 100%; background: rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; align-items: center; border-right: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px; gap: 30px; overflow-y: scroll; scroll-snap-type: y mandatory; scrollbar-width: none;">
+            
+            <div class="enchant-card" onclick="executeEnchant('simple')" style="width: 280px; flex-shrink: 0; background: rgba(20, 20, 20, 0.95); border: 2px solid #FFD700; border-radius: 12px; color: white; display: flex; flex-direction: column; height: 400px; overflow: hidden; scroll-snap-align: center;">
+                <div style="padding: 18px; background: rgba(255, 215, 0, 0.1); border-bottom: 1px solid #FFD700; text-align: center;">
+                    <h2 style="margin: 0; color: #FFD700; font-family: 'Georgia', serif; font-size: 1.3rem;">Simple Recipes</h2>
+                </div>
+                <div style="flex: 1; padding: 15px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; justify-items: center; align-content: start;">
+                    <img src="assets/currencies/precision.jpg" style="width: 55px;" title="Precision">
+                    <img src="assets/currencies/overheat.jpg" style="width: 55px;" title="Overheat">
+                    <img src="assets/currencies/poisoning.jpg" style="width: 55px;" title="Poisoning">
+                    
+                </div>
+                <div style="padding: 15px; background: #0a0a0a;">
+                    <div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 10px; font-size: 0.8rem;">
+                        <span>3 <img src="assets/energies/energy_shadow.jpg" style="width: 15px;"></span>
+                        <span>5 <img src="assets/energies/energy_bloom.jpg" style="width: 15px;"></span>
+                        <span> 15 <img src="assets/energies/energy_crysonite.jpg" style="width: 15px;"></span>
+                    </div>
+                    <button onclick="executeEnchant('simple')" style="width: 100%; padding: 10px; background: #FFD700; font-weight: bold; border-radius: 5px;">ENCHANT: 1,000 <img src="assets/currencies/currency_gems.jpg" style="width: 15px;"></button>
+                </div>
+            </div>
+
+            <div class="enchant-card" onclick="executeEnchant('medium')" style="width: 280px; flex-shrink: 0; background: rgba(20, 20, 20, 0.95); border: 2px solid #FFD700; border-radius: 12px; color: white; display: flex; flex-direction: column; height: 400px; overflow: hidden; scroll-snap-align: center;">
+                <div style="padding: 10px; background: rgba(255, 215, 0, 0.1); border-bottom: 1px solid #FFD700; text-align: center;">
+                    <h2 style="margin: 0; color: #FFD700; font-family: 'Georgia', serif; font-size: 1.3rem;">Medium Recipes</h2>
+                </div>
+                <div style="flex: 1; padding: 15px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; justify-items: center; align-content: start;">
+                    <img src="assets/currencies/bleeding.jpg" style="width: 55px;" title="Bleeding">
+                    <img src="assets/currencies/timebomb.jpg" style="width: 55px;" title="Timebomb">
+                    
+                    <img src="assets/currencies/frenzy.jpg" style="width: 55px;" title="Frenzy">
+                    
+                </div>
+                <div style="padding: 15px; background: #0a0a0a;">
+                    <div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 10px; font-size: 0.8rem;">
+                        <span>15 <img src="assets/energies/energy_shadow.jpg" style="width: 15px;"></span>
+                        <span>25 <img src="assets/energies/energy_bloom.jpg" style="width: 15px;"></span>
+                        <span> 15 <img src="assets/energies/energy_crysonite.jpg" style="width: 15px;"></span>
+                    </div>
+                    <button onclick="executeEnchant('medium')" style="width: 100%; padding: 10px; background: #FFD700; font-weight: bold; border-radius: 5px;">ENCHANT: 5,000 <img src="assets/currencies/currency_gems.jpg" style="width: 15px;"></button>
+                </div>
+            </div>
+
+            <div class="enchant-card" onclick="executeEnchant('legendary')" style="width: 280px; flex-shrink: 0; background: rgba(20, 20, 20, 0.95); border: 2px solid #FFD700; border-radius: 12px; color: white; display: flex; flex-direction: column; height: 400px; overflow: hidden; scroll-snap-align: center; margin-bottom: 50px;">
+                <div style="padding: 10px; background: rgba(255, 215, 0, 0.1); border-bottom: 1px solid #FFD700; text-align: center;">
+                    <h2 style="margin: 0; color: #FFD700; font-family: 'Georgia', serif; font-size: 1.3rem;">Mythical Recipes</h2>
+                </div>
+                <div style="flex: 1; padding: 15px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; justify-items: center; align-content: start;">
+                    <img src="assets/currencies/karma.jpg" style="width: 55px;" title="Karma">
+                    <img src="assets/currencies/arcane.jpg" style="width: 55px;" title="Arcane">
+                    
+                    <img src="assets/currencies/crimson.jpg" style="width: 55px;" title="Crimson">
+                    <img src="assets/currencies/tempest.jpg" style="width: 55px;" title="Tempest">
+                </div>
+                <div style="padding: 15px; background: #0a0a0a;">
+                    <div style="display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 10px; font-size: 0.8rem;">
+                        <span>50 <img src="assets/energies/energy_bloom.jpg" style="width: 15px;"></span>
+                        <span> 15 <img src="assets/energies/energy_shadow.jpg" style="width: 15px;"></span>
+                        <span> 15 <img src="assets/energies/energy_crysonite.jpg" style="width: 15px;"></span>
+                    </div>
+                    <button onclick="executeEnchant('legendary')" style="width: 100%; padding: 10px; background: #FFD700; font-weight: bold; border-radius: 5px;">ENCHANT: 20,000 <img src="assets/currencies/currency_gems.jpg" style="width: 15px;"></button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="weapon-selection-band" style="width: 350px; height: 100%; background: rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; align-items: center; border-left: 1px solid rgba(255, 255, 255, 0.1); padding: 20px 0; gap: 20px;">
+
+            <div id="active-weapon-box" onclick="openWeapons('enchant');" style="width: 300px; height: 250px; background: rgba(20, 20, 20, 0.95); border: 2px solid #FFD700; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; position: relative; box-shadow: 0 0 15px rgba(0,0,0,0.5); cursor: pointer;">
+                <div id="weapon-league-tag" style="padding: 8px; background: rgba(255, 215, 0, 0.1); border-bottom: 1px solid #FFD700; text-align: center; color: #FFD700; font-family: 'Georgia', serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                    No Weapon Selected
+                </div>
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(50,50,50,1) 0%, rgba(10,10,10,1) 100%);">
+                    <img id="enchant-weapon-preview" src="" style="max-width: 80%; max-height: 80%; display: none;">
+                    <p id="no-weapon-text" style="color: #555; font-size: 0.8rem;">Select a weapon to enchant</p>
+                </div>
+                <div id="enchant-weapon-name" style="padding: 10px; background: #0a0a0a; text-align: center; color: white; font-weight: bold; border-top: 1px solid #333;">
+                    ---
+                </div>
+            </div>
+
+            <div id="slot-selection-rack" style="width: 300px; flex: 1; background: rgba(10, 10, 10, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 15px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto;">
+                <p style="color: #FFD700; font-family: 'Georgia', serif; font-size: 0.85rem; margin: 0 0 5px 0; text-align: center; letter-spacing: 1px;">ENCHANTMENT SLOTS</p>
+                
+                <div id="slots-container" style="display: flex; flex-direction: column; gap: 10px;">
+                    <div class="enchant-slot" data-slot="1" onclick="selectEnchantSlot(this)" style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 10px; gap: 15px; height: 60px;">
+                        <span style="color: #888; font-family: 'serif'; font-size: 1.2rem; min-width: 30px; text-align: center;">I</span>
+                        <div class="slot-icon-wrapper" style="width: 45px; height: 45px; background: rgba(0,0,0,0.3); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <img class="applied-enchant-icon" src="" style="width: 100%; height: 100%; display: none;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; justify-content: center;">
+                            <span class="enchantment-name" style="color: #666; font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">No Enchantment</span>
+                            <span class="slot-type-label" style="font-size: 0.65rem; color: #444; text-transform: uppercase; letter-spacing: 0.5px;"></span>
+                        </div>
+                    </div>
+
+                    <div class="enchant-slot" data-slot="2" onclick="selectEnchantSlot(this)" style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 10px; gap: 15px; height: 60px;">
+                        <span style="color: #888; font-family: 'serif'; font-size: 1.2rem; min-width: 30px; text-align: center;">II</span>
+                        <div class="slot-icon-wrapper" style="width: 45px; height: 45px; background: rgba(0,0,0,0.3); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <img class="applied-enchant-icon" src="" style="width: 100%; height: 100%; display: none;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; justify-content: center;">
+                            <span class="enchantment-name" style="color: #666; font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">No Enchantment</span>
+                            <span class="slot-type-label" style="font-size: 0.65rem; color: #444; text-transform: uppercase; letter-spacing: 0.5px;"></span>
+                        </div>
+                    </div>
+
+                    <div class="enchant-slot" data-slot="3" onclick="selectEnchantSlot(this)" style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 10px; gap: 15px; height: 60px;">
+                        <span style="color: #888; font-family: 'serif'; font-size: 1.2rem; min-width: 30px; text-align: center;">III</span>
+                        <div class="slot-icon-wrapper" style="width: 45px; height: 45px; background: rgba(0,0,0,0.3); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <img class="applied-enchant-icon" src="" style="width: 100%; height: 100%; display: none;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; justify-content: center;">
+                            <span class="enchantment-name" style="color: #666; font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">No Enchantment</span>
+                            <span class="slot-type-label" style="font-size: 0.65rem; color: #444; text-transform: uppercase; letter-spacing: 0.5px;"></span>
+                        </div>
+                    </div>
+
+                    <div class="enchant-slot" data-slot="4" onclick="selectEnchantSlot(this)" style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 10px; gap: 15px; height: 60px;">
+                        <span style="color: #888; font-family: 'serif'; font-size: 1.2rem; min-width: 30px; text-align: center;">IV</span>
+                        <div class="slot-icon-wrapper" style="width: 45px; height: 45px; background: rgba(0,0,0,0.3); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <img class="applied-enchant-icon" src="" style="width: 100%; height: 100%; display: none;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; justify-content: center;">
+                            <span class="enchantment-name" style="color: #666; font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">No Enchantment</span>
+                            <span class="slot-type-label" style="font-size: 0.65rem; color: #444; text-transform: uppercase; letter-spacing: 0.5px;"></span>
+                        </div>
+                    </div>
+
+                    <div class="enchant-slot" data-slot="5" onclick="selectEnchantSlot(this)" style="display: flex; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 10px; gap: 15px; height: 60px;">
+                        <span style="color: #888; font-family: 'serif'; font-size: 1.2rem; min-width: 30px; text-align: center;">V</span>
+                        <div class="slot-icon-wrapper" style="width: 45px; height: 45px; background: rgba(0,0,0,0.3); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <img class="applied-enchant-icon" src="" style="width: 100%; height: 100%; display: none;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; justify-content: center;">
+                            <span class="enchantment-name" style="color: #666; font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">No Enchantment</span>
+                            <span class="slot-type-label" style="font-size: 0.65rem; color: #444; text-transform: uppercase; letter-spacing: 0.5px;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
